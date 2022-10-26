@@ -4,15 +4,15 @@ public class DepositCalculator {
 
     double CalculateComplexPercent(double depositAmount, double yearRate, int depositPeriod) {
         double pay = depositAmount * Math.pow((1 + yearRate / 12), 12 * depositPeriod);
-        return round(pay, 2);
+        return roundDepositAmount(pay, 2);
     }
 
     double CalculateSimplePercent(double depositAmount, double yearRate, int depositPeriod) {
-        return round(depositAmount + depositAmount * yearRate * depositPeriod, 2);
+        return roundDepositAmount(depositAmount + depositAmount * yearRate * depositPeriod, 2);
     }
 
-    double round(double value, int places) {
-        double scale = Math.pow(10, places);
+    double roundDepositAmount(double value, int power) {
+        double scale = Math.pow(10, power);
         return Math.round(value * scale) / scale;
     }
 
